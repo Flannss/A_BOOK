@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiteraNet - Pustaka Digital</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome untuk icon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .book-card {
+            transition: transform 0.3s;
+            height: 100%;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .rating {
+            color: #ffc107;
+        }
+
+        .book-img {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/400') center/cover;
+            color: white;
+            padding: 100px 0;
+        }
+
+        .search-bar {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+        }
+
+        .search-bar::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .nav-link {
+            font-weight: 500;
+        }
+
+        .kategori-badge {
+            background-color: #6c757d;
+            color: white;
+            margin-right: 5px;
+            font-size: 0.8rem;
+        }
+
+        .featured-section {
+            background-color: #f8f9fa;
+            padding: 40px 0;
+        }
+
+        .type-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+        }
+        .favorite-btn.favorited {
+            background-color: #f39c12;
+            border-color: #f39c12;
+        }
+
+        .favorite-btn.favorited i {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-book me-2"></i>
+                LiteraNet
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            Kategori
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">E-Book</a></li>
+                            <li><a class="dropdown-item" href="#">Novel</a></li>
+                            <li><a class="dropdown-item" href="#">Jurnal</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Semua Kategori</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Terbaru</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Populer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tentang Kami</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="login.html" class="btn btn-outline-light me-2">Masuk</a>
+                    <a href="register.html" class="btn btn-warning">Daftar</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner/Hero Section -->
+    <section class="banner text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Temukan Literatur Digital Favorit Anda</h1>
+            <p class="lead mb-5">Koleksi e-book, novel, dan jurnal ilmiah terlengkap untuk kebutuhan membaca dan
+                referensi Anda</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control search-bar py-3"
+                            placeholder="Cari judul, penulis, atau kata kunci...">
+                        <button class="btn btn-sm btn-outline-secondary favorite-btn">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                        <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter dan Pengurutan -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-secondary">Semua</button>
+                    <a href="file:///D:/smester%202/A-book/E-book.html" class="btn btn-outline-secondary">E-Book</a>
+                    <a href="file:///D:/smester%202/A-book/Novel.html" class="btn btn-outline-secondary">Novel</a>
+                    <button type="button" class="btn btn-outline-secondary">Jurnal</button>
+                </div>
+            </div>
+            <div class="col-md-6 text-end">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                        Urutkan
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">E-book</a></li>
+                        <li><a class="dropdown-item" href="#">Terbaru</a></li>
+                        <li><a class="dropdown-item" href="#">Abjad (A-Z)</a></li>
+                        <li><a class="dropdown-item" href="#">Paling Banyak Dibaca</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured E-Book Section -->
+    <section class="featured-section mt-4">
+        <div class="container">
+            <h2 class="mb-4">E-Book Terpopuler</h2>
+            <div class="row g-4">
+                <!-- E-Book 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card book-card">
+                        <span class="badge bg-primary type-badge">E-Book</span>
+                        <img src="SAMPUL-[E-Book].png" width="100" class="card-img-top book-img" alt="E-Book 1">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-danger">Terlaris</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="ms-1">4.5</span>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Pemrograman Python untuk Pemula</h5>
+                            <p class="card-text small text-muted">Oleh: John Developer</p>
+                            <div class="mb-2">
+                                <span class="badge kategori-badge">Teknologi</span>
+                                <span class="badge kategori-badge">Pemrograman</span>
+                            </div>
+                            <p class="card-text small">Panduan lengkap untuk belajar bahasa pemrograman Python dari
+                                dasar hingga mahir.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="file:///D:/smester%202/A-book/Ebook-1.html"
+                                    class="btn btn-sm btn-primary">Baca</a>
+                                <button class="btn btn-sm btn-outline-secondary favorite-btn">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-Book 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card book-card">
+                        <span class="badge bg-primary type-badge">E-Book</span>
+                        <img src="blm buat.png" class="card-img-top book-img" alt="E-Book 2">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-secondary">2024</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span class="ms-1">4.0</span>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Rancang Bangun Website Modern</h5>
+                            <p class="card-text small text-muted">Oleh: Sarah Designer</p>
+                            <div class="mb-2">
+                                <span class="badge kategori-badge">Web Design</span>
+                                <span class="badge kategori-badge">UX/UI</span>
+                            </div>
+                            <p class="card-text small">E-book komprehensif tentang desain web modern dengan fokus pada
+                                pengalaman pengguna.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-primary">Baca</button>
+                                <button class="btn btn-sm btn-outline-secondary favorite-btn">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-Book 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card book-card">
+                        <span class="badge bg-primary type-badge">E-Book</span>
+                        <img src="blm buat.png" class="card-img-top book-img" alt="E-Book 3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-success">Gratis</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="ms-1">5.0</span>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Artificial Intelligence: Konsep Dasar</h5>
+                            <p class="card-text small text-muted">Oleh: Dr. Alan Smith</p>
+                            <div class="mb-2">
+                                <span class="badge kategori-badge">Teknologi</span>
+                                <span class="badge kategori-badge">AI</span>
+                            </div>
+                            <p class="card-text small">Pengantar komprehensif tentang konsep dasar kecerdasan buatan
+                                untuk pemula.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-primary">Baca</button>
+                                <button class="btn btn-sm btn-outline-secondary favorite-btn">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-Book 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card book-card">
+                        <span class="badge bg-primary type-badge">E-Book</span>
+                        <img src="blm buat.png"card-img-top book-img" alt="E-Book 4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-warning text-dark">Baru</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="far fa-star"></i>
+                                    <span class="ms-1">3.5</span>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Manajemen Bisnis Digital</h5>
+                            <p class="card-text small text-muted">Oleh: Rebecca Johnson</p>
+                            <div class="mb-2">
+                                <span class="badge kategori-badge">Bisnis</span>
+                                <span class="badge kategori-badge">Digital</span>
+                            </div>
+                            <p class="card-text small">Strategi dan taktik untuk mengelola bisnis di era digital dengan
+                                efektif.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-primary">Baca</button>
+                                <button class="btn btn-sm btn-outline-secondary favorite-btn">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Novel Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="mb-4">Novel Terbaru</h2>
+            <div class="row g-4">
+                <!-- Novel 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card book-card">
+                        <span class="badge bg-success type-badge">Novel</span>
+                        <img src="SAMPUL[ NOVEL 1 ].png" class="card-img-top book-img" alt="Novel 1">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-danger">Bestseller</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span class="ms-1">4.0</span>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Senja di Jakarta</h5>
+                            <p class="card-text small text-muted">Oleh: Amelia Putri</p>
+                            <div class="mb-2">
+                                <span class="badge kategori-badge">Romantis</span>
+                                <span class="badge kategori-badge">Drama</span>
+                            </div>
+                            <p class="card-text small">Kisah tentang perjuangan cinta dua insan yang dipisahkan jarak
+                                dan waktu.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="file:///D:/smester%202/A-book/Novel-1.html"
+                                    class="btn btn-sm btn-primary">Baca</a>
+                                <button class="btn btn-sm btn-outline-secondary favorite-btn">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Novel 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card book-card">
+                        <span class="badge bg-success type-badge">Novel</span>
+                        <img src="blm buat.png" class="card-img-top book-img" alt="Novel 2">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-info text-dark">Terjemahan</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="ms-1">4.5</span>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Dunia Paralel</h5>
+                            <p class="card-text small text-muted">Oleh: Michael Reid</p>
+                            <div class="mb-2">
+                                <span class="badge kategori-badge">Fantasi</span>
+                                <span class="badge kategori-badge">Fiksi Ilmiah</span>
+                            </div>
+                            <p class="card-text small">Novel fiksi ilmiah tentang perjalanan antardimensi dan paradoks
+                                waktu.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-primary">Baca</button>
+                                <button class="btn btn-sm btn-outline-secondary favorite-btn">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Novel 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card book-card">
+                        <span class="badge bg-success type-badge">Novel</span>
+                        <img src="blm buat.png" class="card-img-top book-img" alt="Novel 3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-dark">Award</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="ms-1">5.0</span>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Pelukis Awan</h5>
+                            <p class="card-text small text-muted">Oleh: Randi Putra</p>
+                            <div class="mb-2">
+                                <span class="badge kategori-badge">Sastra</span>
+                                <span class="badge kategori-badge">Inspiratif</span>
+                            </div>
+                            <p class="card-text small">Novel sastra tentang seorang seniman yang menemukan makna hidup
+                                melalui keindahan alam.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-primary">Baca</button>
+                                <button class="btn btn-sm btn-outline-secondary favorite-btn">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Novel 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card book-card">
+                        <span class="badge bg-success type-badge">Novel</span>
+                        <img src="blm buat.png" class="card-img-top book-img" alt="Novel 4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-warning text-dark">Edisi Terbatas</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span class="ms-1">4.0</span>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Misteri Danau Sunyi</h5>
+                            <p class="card-text small text-muted">Oleh: Diana Kusuma</p>
+                            <div class="mb-2">
+                                <span class="badge kategori-badge">Misteri</span>
+                                <span class="badge kategori-badge">Thriller</span>
+                            </div>
+                            <p class="card-text small">Novel misteri tentang serangkaian kejadian aneh di sekitar danau
+                                terpencil.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-primary">Baca</button>
+                                <button class="btn btn-sm btn-outline-secondary favorite-btn">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Jurnal Section -->
+    <section class="featured-section">
+        <div class="container">
+            <h2 class="mb-4">Jurnal Referensi</h2>
+            <div class="row g-4">
+                <!-- Jurnal 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card book-card">
+                        <span class="badge bg-info type-badge">Jurnal</span>
+                        <img src="blm buat.png" class="card-img-top book-img" alt="Jurnal 1">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-secondary">Vol. 23</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="ms-1">4.5</span>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Jurnal Teknologi Informasi Indonesia</h5>
+                            <p class="card-text small text-muted">Diterbitkan: Jan 2025</p>
+                            <div class="mb-2">
+                                <span class="badge kategori-badge">Teknologi</span>
+                                <span class="badge kategori-badge">Penelitian</span>
+                            </div>
+                            <p class="card-text small">Kumpulan artikel ilmiah tentang perkembangan teknologi informasi
+                                di
+                                Indonesia.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-primary">Baca</button>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jurnal 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card book-card">
+                        <span class="badge bg-info type-badge">Jurnal</span>
+                        <img src="blm buat.png" class="card-img-top book-img" alt="Jurnal 2">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-danger">Terbaru</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span class="ms-1">4.0</span>
+                                </div>
+                            </div>
+                            <h5 class="card-title">International Journal of Medical Research</h5>
+                            <p class="card-text small text-muted">Diterbitkan: Mar 2025</p>
+                            <div class="mb-2">
+                                <span class="badge kategori-badge">Kesehatan</span>
+                                <span class="badge kategori-badge">Medis</span>
+                            </div>
+                            <p class="card-text small">Jurnal internasional dengan berbagai penelitian dalam bidang
+                                kesehatan dan kedokteran.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-primary">Baca</button>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jurnal 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card book-card">
+                        <span class="badge bg-info type-badge">Jurnal</span>
+                        <img src="blm buat.png" class="card-img-top book-img" alt="Jurnal 3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-success">Open Access</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="ms-1">5.0</span>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Jurnal Riset Pendidikan</h5>
+                            <p class="card-text small text-muted">Diterbitkan: Feb 2025</p>
+                            <div class="mb-2">
+                                <span class="badge kategori-badge">Pendidikan</span>
+                                <span class="badge kategori-badge">Riset</span>
+                            </div>
+                            <p class="card-text small">Publikasi ilmiah untuk memajukan riset dan inovasi dalam bidang
+                                pendidikan.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-primary">Baca</button>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jurnal 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card book-card">
+                        <span class="badge bg-info type-badge">Jurnal</span>
+                        <img src="blm buat.png" class="card-img-top book-img" alt="Jurnal 4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-warning text-dark">Q1</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="far fa-star"></i>
+                                    <span class="ms-1">3.5</span>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Journal of Environmental Studies</h5>
+                            <p class="card-text small text-muted">Diterbitkan: Apr 2025</p>
+                            <div class="mb-2">
+                                <span class="badge kategori-badge">Lingkungan</span>
+                                <span class="badge kategori-badge">Sains</span>
+                            </div>
+                            <p class="card-text small">Artikel ilmiah tentang isu-isu lingkungan dan solusi
+                                berkelanjutan.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button class="btn btn-sm btn-primary">Baca</button>
+                                    <button class="btn btn-sm btn-outline-secondary">
+                                        <i class="far fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>

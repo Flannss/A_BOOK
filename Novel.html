@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome untuk icon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .book-card {
+            transition: transform 0.3s;
+            height: 100%;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .rating {
+            color: #ffc107;
+        }
+
+        .book-img {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/400') center/cover;
+            color: white;
+            padding: 100px 0;
+        }
+
+        .search-bar {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+        }
+
+        .search-bar::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .nav-link {
+            font-weight: 500;
+        }
+
+        .kategori-badge {
+            background-color: #6c757d;
+            color: white;
+            margin-right: 5px;
+            font-size: 0.8rem;
+        }
+
+        .featured-section {
+            background-color: #f8f9fa;
+            padding: 40px 0;
+        }
+
+        .type-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+        }
+
+        .favorite-btn.favorited {
+            background-color: #f39c12;
+            border-color: #f39c12;
+        }
+
+        .favorite-btn.favorited i {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="btn">← back</a>
+    </header>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="mb-4">Novel Terbaru</h2>
+            <div class="row g-4">
+                <!-- Novel 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card book-card">
+                        <span class="badge bg-success type-badge">Novel</span>
+                        <img src="SAMPUL[ NOVEL 1 ].png" class="card-img-top book-img" alt="Novel 1">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-danger">Bestseller</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span class="ms-1">4.0</span>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Senja di Jakarta</h5>
+                            <p class="card-text small text-muted">Oleh: Amelia Putri</p>
+                            <div class="mb-2">
+                                <span class="badge kategori-badge">Romantis</span>
+                                <span class="badge kategori-badge">Drama</span>
+                            </div>
+                            <p class="card-text small">Kisah tentang perjuangan cinta dua insan yang dipisahkan jarak dan waktu.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="file:///D:/smester%202/A-book/Novel-1.html" class="btn btn-sm btn-primary">Baca</a>
+                                <button class="btn btn-sm btn-outline-secondary favorite-btn">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Novel 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card book-card">
+                        <span class="badge bg-success type-badge">Novel</span>
+                        <img src="blm buat.png" class="card-img-top book-img" alt="Novel 2">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-info text-dark">Terjemahan</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="ms-1">4.5</span>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Dunia Paralel</h5>
+                            <p class="card-text small text-muted">Oleh: Michael Reid</p>
+                            <div class="mb-2">
+                                <span class="badge kategori-badge">Fantasi</span>
+                                <span class="badge kategori-badge">Fiksi Ilmiah</span>
+                            </div>
+                            <p class="card-text small">Novel fiksi ilmiah tentang perjalanan antardimensi dan paradoks waktu.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-primary">Baca</button>
+                                <button class="btn btn-sm btn-outline-secondary favorite-btn">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Novel 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card book-card">
+                        <span class="badge bg-success type-badge">Novel</span>
+                        <img src="blm buat.png" class="card-img-top book-img" alt="Novel 3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-dark">Award</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="ms-1">5.0</span>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Pelukis Awan</h5>
+                            <p class="card-text small text-muted">Oleh: Randi Putra</p>
+                            <div class="mb-2">
+                                <span class="badge kategori-badge">Sastra</span>
+                                <span class="badge kategori-badge">Inspiratif</span>
+                            </div>
+                            <p class="card-text small">Novel sastra tentang seorang seniman yang menemukan makna hidup melalui keindahan alam.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-primary">Baca</button>
+                                <button class="btn btn-sm btn-outline-secondary favorite-btn">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Novel 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card book-card">
+                        <span class="badge bg-success type-badge">Novel</span>
+                        <img src="blm buat.png" class="card-img-top book-img" alt="Novel 4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-warning text-dark">Edisi Terbatas</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span class="ms-1">4.0</span>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Misteri Danau Sunyi</h5>
+                            <p class="card-text small text-muted">Oleh: Diana Kusuma</p>
+                            <div class="mb-2">
+                                <span class="badge kategori-badge">Misteri</span>
+                                <span class="badge kategori-badge">Thriller</span>
+                            </div>
+                            <p class="card-text small">Novel misteri tentang serangkaian kejadian aneh di sekitar danau terpencil.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-primary">Baca</button>
+                                <button class="btn btn-sm btn-outline-secondary favorite-btn">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Menambahkan fungsi untuk mengganti warna tombol favorit
+        const favoriteButtons = document.querySelectorAll('.favorite-btn');
+        favoriteButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                this.classList.toggle('favorited');
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('far')) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                } else {
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
