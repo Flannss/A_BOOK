@@ -74,12 +74,40 @@
         .favorite-btn.favorited i {
             color: #fff;
         }
+
+        /* Tombol Back Unik */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(45deg, #2575fc, #6a11cb);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-btn i {
+            font-size: 1rem;
+        }
     </style>
 </head>
 
 <body>
-    <header>
-        <a href="index.html" class="btn">← back</a>
+    <header class="p-3">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Kembali
+        </a>
     </header>
 
     <section class="featured-section mt-4">
@@ -231,12 +259,10 @@
             button.addEventListener('click', function () {
                 const icon = this.querySelector('i');
                 if (icon.classList.contains('far')) {
-                    // Aktifkan (favorit)
                     icon.classList.remove('far');
                     icon.classList.add('fas');
                     this.classList.add('favorited');
                 } else {
-                    // Nonaktifkan (hapus favorit)
                     icon.classList.remove('fas');
                     icon.classList.add('far');
                     this.classList.remove('favorited');
