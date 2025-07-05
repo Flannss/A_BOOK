@@ -642,3 +642,35 @@
     </div>
   </div>
 </section>
+              
+<!-- Script Favorit -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const favoriteButtons = document.querySelectorAll(".favorite-btn");
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || {};
+
+    favoriteButtons.forEach(button => {
+      const card = button.closest(".book-card");
+      const title = card.querySelector(".card-title").innerText;
+
+      // Set icon saat load
+      if (favorites[title]) {
+        button.innerHTML = '<i class="fas fa-bookmark"></i>';
+      } else {
+        button.innerHTML = '<i class="far fa-bookmark"></i>';
+      }
+
+      // Event klik
+      button.addEventListener("click", () => {
+        if (favorites[title]) {
+          delete favorites[title];
+          button.innerHTML = '<i class="far fa-bookmark"></i>';
+        } else {
+          favorites[title] = true;
+          button.innerHTML = '<i class="fas fa-bookmark"></i>';
+        }
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+      });
+    });
+  });
+</script>
