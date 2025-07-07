@@ -171,6 +171,7 @@
                       const status = localStorage.getItem('ebook_paid_' + ebookId);
                       const tombol = document.getElementById(btnId);
                       if (status === 'yes') {
+                        tombol.classList.remove('text-success');
                         tombol.textContent = 'Baca Sekarang';
                         tombol.href = 'Ebook-' + ebookId + '.html';
                         tombol.classList.remove('btn-success');
