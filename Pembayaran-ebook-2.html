@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembayaran - Rancang Bangun Website Modern</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f0f4f8;
+      font-family: 'Poppins', sans-serif;
+      padding: 20px;
+    }
+
+    .payment-container {
+      background: #ffffff;
+      padding: 30px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #16a085;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .btn-pay {
+      background-color: #16a085;
+      color: white;
+      width: 100%;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-pay:hover {
+      background-color: #138974;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="payment-container">
+    <h2>Pembayaran</h2>
+    <p><strong>Judul E-Book:</strong> Rancang Bangun Website Modern</p>
+    <p><strong>Harga:</strong> Rp 50.000</p>
+
+    <form action="#" method="POST">
+      <div class="mb-3">
+        <label for="nama" class="form-label">Nama Lengkap</label>
+        <input type="text" class="form-control" id="nama" name="nama" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Alamat Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="metode" class="form-label">Metode Pembayaran</label>
+        <select class="form-select" id="metode" name="metode" required>
+          <option value="">Pilih Metode</option>
+          <option value="qris">QRIS (Gopay, ShopeePay, OVO, dll.)</option>
+          <option value="transfer">Transfer Bank</option>
+          <option value="ewallet">E-Wallet Lainnya</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-pay">Bayar Sekarang</button>
+    </form>
+
+    <a href="E-book.html" class="back-btn">← Kembali ke E-Book</a>
+  </div>
+
+</body>
+
+</html>
