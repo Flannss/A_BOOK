@@ -79,7 +79,16 @@
           <option value="ewallet">E-Wallet Lainnya</option>
         </select>
       </div>
-      <a href="payment-success-ebook2.html?ebook=2" class="btn-pay">Bayar Sekarang</a>
+      <script>
+        // Simulasikan setelah pembayaran sukses:
+        function selesaiBayar(ebookId) {
+          localStorage.setItem('ebook_paid_' + ebookId, 'yes');
+          alert('Pembayaran Berhasil!');
+          window.location.href = 'index.html'; // Balik ke halaman utama
+        }
+      </script>
+      <button onclick="selesaiBayar(2)" class="btn btn-success">Bayar Sekarang</button>
+<!--       <a href="payment-success-ebook2.html?ebook=2" class="btn-pay">Bayar Sekarang</a> -->
     </form>
 
     <a href="E-book.html" class="back-btn">← Kembali ke E-Book</a>
