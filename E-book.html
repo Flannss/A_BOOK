@@ -159,30 +159,30 @@
                                 <span class="kategori-badge">UX/UI</span>
                             </div>
                             <p class="small">E-book tentang desain website modern & UX terbaik.</p>
-                            <div id="btn-ebook-2" class="text-success fw-bold mb-2">Harga: Rp 50.000</div>
+                            <div id="harga-ebook-2" class="text-success fw-bold mb-2">Harga: Rp 50.000</div>
                             <a id="btn-ebook-2" href="Pembayaran-ebook-2.html?ebook=2" class="btn btn-success w-100">Bayar Sekarang</a>
                         </div>
                     </div>
                 </div>
-            
-                  <!-- Script cek status pembayaran -->
-                  <script>
-                    function cekStatusBayar(ebookId, btnId) {
-                      const status = localStorage.getItem('ebook_paid_' + ebookId);
-                      const tombol = document.getElementById(btnId);
-                      if (status === 'yes') {
-                        tombol.classList.remove('text-success');
-                        tombol.textContent = 'Baca Sekarang';
-                        tombol.href = 'Ebook-' + ebookId + '.html';
-                        tombol.classList.remove('btn-success');
-                        tombol.classList.add('btn-primary');
-                      }
-                    }
+  
+                <!-- Script cek status pembayaran -->
+                <script>
+                  function cekStatusBayar(ebookId) {
+                    const status = localStorage.getItem('ebook_paid_' + ebookId);
+                    const tombol = document.getElementById('btn-ebook-' + ebookId);
+                    const harga = document.getElementById('harga-ebook-' + ebookId);
                 
-                    window.onload = () => {
-                      cekStatusBayar(2, 'btn-ebook-2');
-                    };
-                  </script>
+                    if (status === 'yes') {
+                      harga.textContent = 'Gratis! Sudah Dibayar';
+                      tombol.textContent = 'Baca Sekarang';
+                      tombol.href = 'Ebook-' + ebookId + '.html';
+                      tombol.classList.remove('btn-success');
+                      tombol.classList.add('btn-primary');
+                    }
+                  }
+                
+                  cekStatusBayar(2);
+                </script>
 
                 <!-- E-Book 3 (Berbayar) -->
                 <div class="col-md-6 col-lg-3">
