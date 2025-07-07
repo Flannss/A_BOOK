@@ -135,50 +135,55 @@
                     </div>
                 </div>
 
-                <!-- E-Book 2 (Berbayar) -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="card book-card">
-                        <span class="type-badge">E-Book</span>
-                        <img src="rancangbangunwebsitemodern.png" class="card-img-top book-img" alt="E-Book 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Rancang Bangun Website Modern</h5>
-                            <p class="text-muted small mb-2">Oleh: Sarah Designer</p>
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge bg-secondary">2024</span>
-                                <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <span class="ms-1">4.0</span>
-                                </div>
-                            </div>
-                            <div class="mb-2">
-                                <span class="kategori-badge">Web Design</span>
-                                <span class="kategori-badge">UX/UI</span>
-                            </div>
-                            <p class="small">E-book tentang desain website modern & UX terbaik.</p>
-                            <script>
-                              function cekStatusBayar(ebookId, btnId) {
-                                const status = localStorage.getItem('ebook_paid_' + ebookId);
-                                const tombol = document.getElementById(btnId);
-                                if (status === 'yes') {
-                                  tombol.textContent = 'Baca Sekarang';
-                                  tombol.href = 'Ebook-' + ebookId + '.html';
-                                  tombol.classList.remove('btn-success');
-                                  tombol.classList.add('btn-primary');
-                                }
-                              }
-                            
-                              // Cek untuk E-Book 2
-                              cekStatusBayar(2, 'btn-ebook-2');
-                            </script>
-                            <div class="text-success fw-bold mb-2">Harga: Rp 50.000</div>
-                            <a id="btn-ebook-2" href="Pembayaran-ebook-2.html?ebook=2" class="btn btn-success w-100">Bayar Sekarang</a>
+                  <!-- E-Book 2 (Berbayar) -->
+                  <div class="col-md-6 col-lg-3">
+                    <div class="card book-card position-relative">
+                      <span class="type-badge">E-Book</span>
+                      <img src="rancangbangunwebsitemodern.png" class="card-img-top book-img" alt="E-Book 2">
+                      <div class="card-body">
+                        <h5 class="card-title">Rancang Bangun Website Modern</h5>
+                        <p class="text-muted small mb-2">Oleh: Sarah Designer</p>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                          <span class="badge bg-secondary">2024</span>
+                          <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="ms-1">4.0</span>
+                          </div>
                         </div>
+                        <div class="mb-2">
+                          <span class="kategori-badge">Web Design</span>
+                          <span class="kategori-badge">UX/UI</span>
+                        </div>
+                        <p class="small">E-book tentang desain website modern & UX terbaik.</p>
+                        <div class="text-success fw-bold mb-2">Harga: Rp 50.000</div>
+                        <a id="btn-ebook-2" href="Pembayaran-ebook-2.html" class="btn btn-success w-100">Bayar Sekarang</a>
+                      </div>
                     </div>
+                  </div>
                 </div>
+              </div>
+            
+              <!-- Script cek status pembayaran -->
+              <script>
+                function cekStatusBayar(ebookId, btnId) {
+                  const status = localStorage.getItem('ebook_paid_' + ebookId);
+                  const tombol = document.getElementById(btnId);
+                  if (status === 'yes') {
+                    tombol.textContent = 'Baca Sekarang';
+                    tombol.href = 'Ebook-' + ebookId + '.html';
+                    tombol.classList.remove('btn-success');
+                    tombol.classList.add('btn-primary');
+                  }
+                }
+            
+                window.onload = () => {
+                  cekStatusBayar(2, 'btn-ebook-2');
+                };
+              </script>
 
                 <!-- E-Book 3 (Berbayar) -->
                 <div class="col-md-6 col-lg-3">
