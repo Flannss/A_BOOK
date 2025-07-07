@@ -61,7 +61,7 @@
     <p><strong>Judul E-Book:</strong> Rancang Bangun Website Modern</p>
     <p><strong>Harga:</strong> Rp 50.000</p>
 
-    <form action="#" method="POST">
+    <form onsubmit="prosesBayar(event)">
       <div class="mb-3">
         <label for="nama" class="form-label">Nama Lengkap</label>
         <input type="text" class="form-control" id="nama" name="nama" required>
@@ -79,20 +79,20 @@
           <option value="ewallet">E-Wallet Lainnya</option>
         </select>
       </div>
-      <script>
-        // Simulasikan setelah pembayaran sukses:
-        function selesaiBayar(ebookId) {
-          localStorage.setItem('ebook_paid_' + ebookId, 'yes');
-          alert('Pembayaran Berhasil!');
-          window.location.href = 'E-book.html'; // Balik ke halaman utama
-        }
-      </script>
-      <button onclick="selesaiBayar(2)" class="btn btn-success">Bayar Sekarang</button>
-<!--       <a href="payment-success-ebook2.html?ebook=2" class="btn-pay">Bayar Sekarang</a> -->
+      <button type="submit" class="btn-pay">Bayar Sekarang</button>
     </form>
 
     <a href="E-book.html" class="back-btn">← Kembali ke E-Book</a>
   </div>
+
+  <script>
+    function prosesBayar(event) {
+      event.preventDefault(); // Hentikan submit bawaan form
+      localStorage.setItem('ebook_paid_2', 'yes'); // Tandai ebook 2 sudah dibayar
+      alert('Pembayaran Berhasil!');
+      window.location.href = 'E-book.html'; // Redirect ke halaman E-book
+    }
+  </script>
 
 </body>
 
