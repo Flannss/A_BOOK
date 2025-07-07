@@ -159,6 +159,22 @@
                                 <span class="kategori-badge">UX/UI</span>
                             </div>
                             <p class="small">E-book tentang desain website modern & UX terbaik.</p>
+                            <script>
+                              function cekStatusBayar(ebookId, btnId) {
+                                const status = localStorage.getItem('ebook_paid_' + ebookId);
+                                const tombol = document.getElementById(btnId);
+                                if (status === 'yes') {
+                                  tombol.textContent = 'Baca Sekarang';
+                                  tombol.href = 'Ebook-' + ebookId + '.html';
+                                  tombol.classList.remove('btn-success');
+                                  tombol.classList.add('btn-primary');
+                                }
+                              }
+                            
+                              // Cek untuk E-Book 2
+                              cekStatusBayar(2, 'btn-ebook-2');
+                            </script>
+                            <a id="btn-ebook-2" href="payment.html?ebook=2" class="btn btn-success w-100">Bayar Sekarang</a>
                             <div class="text-success fw-bold mb-2">Harga: Rp 50.000</div>
                             <a href="Pembayaran-ebook-2.html?ebook=2" class="btn btn-sm btn-success w-100">Bayar Sekarang</a>
                         </div>
